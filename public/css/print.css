@@ -1,0 +1,398 @@
+@media print {
+  *,
+  *:before,enter code here
+  *:after {
+    
+    text-shadow: none !important;
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+  }
+  
+  
+  .print-single
+{ page-break-inside: avoid;}
+
+
+
+  .table td,.table tr,.row{ font-weight: bold;}
+  .table tr{line-height:0px ;}
+  
+  .box-bcolor {
+        background-color: green !important;
+        color: white !important;
+        padding-right : 20px !important;
+        margin-right : 20px !important;
+    }
+
+
+  .table th{ font-weight:bold !important;
+        }
+
+
+
+
+.kkj {
+
+border: 1px solid black !important;
+padding-top: 5px !important;
+padding-bottom: 5px !important;
+padding-right: 10px !important;
+padding-left: 10px !important; 
+font-weight: bold !important; 
+}
+
+
+.borderfred{
+    border: 1px !important;
+    border-style: solid !important;
+    border-color:  black !important;
+    color: red !important;
+}
+
+
+
+.tfs12boldp {
+
+   font-size: 12px !important; font-weight: bold !important; 
+}
+
+
+.tfs14boldp {
+
+   font-size: 14px !important; font-weight: bold !important; 
+}
+
+
+.tfs16boldp {
+
+   font-size: 16px !important; font-weight: bold !important; 
+}
+
+
+.tfs18boldp {
+
+   font-size: 18px !important; font-weight: bold !important; 
+}
+
+.tfs20boldp {
+
+font-size: 20px !important; font-weight: bold !important;
+            }
+
+.tfs24boldp  {
+
+font-size: 24px !important; font-weight: bold !important;
+
+            }
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f9f9f9 !important;
+}
+
+.bordered-2 {
+
+    border: 2px solid black !important; background-color: #e8eaf6 !important;
+        }
+
+.bordered-1 {
+
+    border: 1px solid black !important;
+       
+        }
+
+.dollar-sign {
+
+  font-size:24px !important;
+  color:red !important;
+}
+
+.print-single
+{ page-break-inside: avoid;}
+
+table.tseparate {
+    border-collapse: separate !important;
+    border-spacing: 50px 0 !important;
+}
+
+table.tseparate-1 {
+    border-collapse: separate !important;
+    border-spacing: 10px 0px !important;
+    border: none !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f9f9f9 !important;
+}
+
+.no-border td {
+    border: none !important;
+   
+        }
+  .backgroundColor {
+        background-color: green !important;
+        color: white !important;
+        padding-right : 20px !important;
+        margin-right : 20px !important;
+    }
+.table-text-center th, .table-text-center td {
+    text-align: center !important;
+   
+        }
+        
+        
+.table-right th, .table-right td {
+    text-align: right !important;
+   
+        }
+        
+        
+.table-left th, .table-left td {
+    text-align: left !important;
+   
+        }
+
+  .table th{ font-weight:bold !important;     }
+
+
+
+.col-print-0 {width:5%; float:left;}
+.col-print-1 {width:10%; float:left;}
+.col-print-2 {width:20%; float:left;}
+.col-print-3 {width:30%; float:left;}
+.col-print-4 {width:40%; float:left;}
+.col-print-5 {width:50%; float:left;}
+.col-print-6 {width:60%; float:left;}
+.col-print-7 {width:70%; float:left;}
+.col-print-8 {width:80%; float:left;}
+.col-print-9 {width:90%; float:left;}
+.col-print-10{width:100%; float:left;}
+.col-print-11{width:15%; float:left;}
+.col-print-12{width:25%; float:left;}
+
+.color-white{
+    color:#fff;
+}
+
+.color-brown,td .color-brown{
+    color:brown !important;
+
+}
+
+.color-blue, td .color-blue {
+    color: blue !important;
+}
+
+.color-green, td .color-green {
+    color: green !important;
+}
+
+.color-red,td .color-red{
+    color:brown !important;
+}
+
+
+table tr .bg-silver{
+  background-color: silver !important;
+}
+
+
+.text-muted {
+  color: #777 !important;
+}
+.text-primary {
+  color: #337ab7 !important;
+}
+
+.text-success {
+  color: #3c763d !important;
+}
+
+.text-info {
+  color: #31708f !important;
+}
+
+.text-warning {
+  color: #8a6d3b !important;
+}
+
+.text-danger {
+  color: #a94442 !important;
+}
+
+table tr .bg-primary {
+  color: #fff !important;
+  background-color: #337ab7 !important;
+}
+
+.bg-success {
+  background-color: #dff0d8 !important;
+}
+
+.table > thead > tr > td.bg-danger {
+  background-color: #f2dede !important;
+}
+
+
+
+
+.table > thead > tr > td.bg-ivory,
+.table > tbody > tr > td.bg-ivory,
+.table > tfoot > tr > td.bg-ivory,
+.table > thead > tr > th.bg-ivory,
+.table > tbody > tr > th.bg-ivory,
+.table > tfoot > tr > th.bg-ivory,
+.table > thead > tr.bg-ivory > td,
+.table > tbody > tr.bg-ivory > td,
+.table > tfoot > tr.bg-ivory> td,
+.table > thead > tr.bg-ivory > th,
+.table > tbody > tr.bg-ivory > th,
+.table > tfoot > tr.bg-ivory > th {
+  background-color: #FFFFF0 !important;
+}
+
+
+.table > thead > tr > td.bg-danger,
+.table > tbody > tr > td.bg-danger,
+.table > tfoot > tr > td.bg-danger,
+.table > thead > tr > th.bg-danger,
+.table > tbody > tr > th.bg-danger,
+.table > tfoot > tr > th.bg-danger,
+.table > thead > tr.bg-danger > td,
+.table > tbody > tr.bg-danger > td,
+.table > tfoot > tr.bg-danger> td,
+.table > thead > tr.bg-danger > th,
+.table > tbody > tr.bg-danger > th,
+.table > tfoot > tr.bg-danger > th {
+  background-color: #f2dede !important;
+}
+.table > thead > tr > td.bg-info,
+.table > tbody > tr > td.bg-info,
+.table > tfoot > tr > td.bg-info,
+.table > thead > tr > th.bg-info,
+.table > tbody > tr > th.bg-info,
+.table > tfoot > tr > th.bg-info,
+.table > thead > tr.bg-info > td,
+.table > tbody > tr.bg-info > td,
+.table > tfoot > tr.bg-info > td,
+.table > thead > tr.bg-info > th,
+.table > tbody > tr.bg-info > th,
+.table > tfoot > tr.bg-info > th {
+  background-color: #d9edf7 !important;
+}
+
+.table > thead > tr > td.bg-success,
+.table > tbody > tr > td.bg-success,
+.table > tfoot > tr > td.bg-success,
+.table > thead > tr > th.bg-success,
+.table > tbody > tr > th.bg-success,
+.table > tfoot > tr > th.bg-success,
+.table > thead > tr.bg-success > td,
+.table > tbody > tr.bg-success > td,
+.table > tfoot > tr.bg-success > td,
+.table > thead > tr.bg-success > th,
+.table > tbody > tr.bg-success > th,
+.table > tfoot > tr.bg-success > th {
+background-color: #dff0d8 !important;
+}
+
+.table > thead > tr > td.bordered-0,
+.table > tbody > tr > td.bordered-0,
+.table > tfoot > tr > td.bordered-0,
+.table > thead > tr > th.bordered-0,
+.table > tbody > tr > th.bordered-0,
+.table > tfoot > tr > th.bordered-0,
+.table > thead > tr.bordered-0 > td,
+.table > tbody > tr.bordered-0 > td,
+.table > tfoot > tr.bordered-0 > td,
+.table > thead > tr.bordered-0 > th,
+.table > tbody > tr.bordered-0 > th,
+.table > tfoot > tr.bordered-0 > th {
+  border: none !important;
+}
+
+.table > thead > tr > td.bg-warning,
+.table > tbody > tr > td.bg-warning,
+.table > tfoot > tr > td.bg-warning,
+.table > thead > tr > th.bg-warning,
+.table > tbody > tr > th.bg-warning,
+.table > tfoot > tr > th.bg-warning,
+.table > thead > tr.bg-warning > td,
+.table > tbody > tr.bg-warning > td,
+.table > tfoot > tr.bg-warning > td,
+.table > thead > tr.bg-warning > th,
+.table > tbody > tr.bg-warning > th,
+.table > tfoot > tr.bg-warning > th {
+  background-color: #fcf8e3 !important;
+}
+
+.table > thead > tr > td.bg-invoice,
+.table > tbody > tr > td.bg-invoice,
+.table > tfoot > tr > td.bg-invoice,
+.table > thead > tr > th.bg-invoice,
+.table > tbody > tr > th.bg-invoice,
+.table > tfoot > tr > th.bg-invoice,
+.table > thead > tr.bg-invoice > td,
+.table > tbody > tr.bg-invoice > td,
+.table > tfoot > tr.bg-invoice > td,
+.table > thead > tr.bg-invoice > th,
+.table > tbody > tr.bg-invoice > th,
+.table > tfoot > tr.bg-invoice > th {
+  background-color: #e8eaf6 !important;
+}
+
+
+  .margin-0 {
+    margin-bottom : 0px !important;
+    margin-top: 0px !important;
+  }
+
+    .margin-1 {
+    margin-bottom:  1px !important;
+    margin-top: 1px !important;
+  }
+
+     .margin-2 {
+    margin-bottom:  2px !important;
+    margin-top: 2px !important;
+  }
+
+
+  .table > tbody > tr > td.bg-red
+  {
+    background-color: red !important;
+  }
+
+    .table > tbody > tr > td.bg-yellow
+  {
+    background-color: yellow !important;
+  }
+.for-watermark-div
+{
+ position: fixed;
+ top:650px;
+ opacity: 0.1;
+
+ z-index: 99;
+ font-size:120px;
+ /* Rotate div */
+ -ms-transform: rotate(60deg); /* IE 9 */
+ -webkit-transform: rotate(60deg); /* Chrome, Safari, Opera */
+ transform: rotate(60deg);
+}
+
+  .bordered-double {
+    border-style: double !important;
+  }
+
+.bgivory {background-color: #FFFFF0 !important;}
+
+
+
+}
+
+   @page  {
+      margin-left: 0.5cm;
+      margin-right: 0.5cm;
+  
+   }

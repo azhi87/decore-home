@@ -1,0 +1,97 @@
+DirectoryIndex /public/index.php
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^  /public/index.php [L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
+#ModPagespeed On
+
+RewriteCond %{HTTP_REFERER} !^http://bamboo-showroom.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://bamboo-showroom.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://bamboo-showroom.info/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://bamboo-showroom.info$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://cotten-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://cotten-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://cotten-home.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://cotten-home.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://decor-home.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://decor-home.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://decor-home.info/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://decor-home.info$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://neveah-mobilya.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://neveah-mobilya.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://neveah-mobilya.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://neveah-mobilya.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.bamboo-showroom.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.bamboo-showroom.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.bamboo-showroom.info/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.bamboo-showroom.info$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.cotten-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.cotten-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.cotten-home.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.cotten-home.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.decor-home.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.decor-home.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.decor-home.info/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.decor-home.info$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.neveah-mobilya.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.neveah-mobilya.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.neveah-mobilya.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.neveah-mobilya.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://bamboo-showroom.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://bamboo-showroom.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://bamboo-showroom.info/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://bamboo-showroom.info$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://cotten-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://cotten-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://cotten-home.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://cotten-home.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://decor-home.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://decor-home.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://decor-home.info/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://decor-home.info$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://neveah-mobilya.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://neveah-mobilya.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://neveah-mobilya.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://neveah-mobilya.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.bamboo-showroom.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.bamboo-showroom.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.bamboo-showroom.info/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.bamboo-showroom.info$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.cotten-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.cotten-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.cotten-home.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.cotten-home.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.decor-home.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.decor-home.dayk-home.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.decor-home.info/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.decor-home.info$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.neveah-mobilya.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.neveah-mobilya.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.neveah-mobilya.dayk-home.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.neveah-mobilya.dayk-home.com$      [NC]
+RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ - [F,NC]
+

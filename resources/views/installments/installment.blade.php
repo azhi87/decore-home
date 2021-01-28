@@ -1,0 +1,226 @@
+@extends('layouts.master')
+<?php $user=new \App\User();$users=$user->users();?>
+@section('content')
+
+<div class="col-md-12 ">
+<div class="card">
+  <div class="card-header text-center text-danger" >
+      <span class='h3'><strong>بەشی وەرگرتنەوەی قیست </strong></span>
+  </div>
+<br/>
+<div class=""> 
+<div class="col-md-4 col-sm-6 col-md-offset-2 hidden-print">
+<form method="POST" action="/installments/sid">
+{{csrf_field()}}
+<div class="input-group">
+      <span class="input-group-btn">
+       <button class="btn btn-danger btn-fill" type="submit"> گەڕان <span class="fa fa-search fa-1x"></span></button>
+      </span>
+      <input type="text" name="sid" class="form-control border-input" placeholder="...گەڕان بۆ ژمارەی وەصل">
+      </div>
+</form>
+</div>
+<div class="col-md-4 col-sm-6 hidden-print">
+<form method="POST" action="/installments/tel">
+{{csrf_field()}}
+<div class="input-group">
+      <span class="input-group-btn">
+       <button class="btn btn-warning btn-fill" type="submit">گەڕان <span class="fa fa-search fa-1x"></span></button>
+      </span>
+      <input type="text" name="tel" class="form-control " placeholder="...گەڕان بە ژمارەی مۆبایلی کڕیار">
+</div>
+</form>
+</div>
+@foreach($sales as $sale)
+      
+  <div>             
+   <table  class="table table-bordered1 text-center table-responsive">
+      <tbody style="background-color: #ede5af;">
+       <tr class="h5">
+          <td>{{$sale->customer->tel}}<span class="bd">:تێل </span></td>
+          <td><span class="bd">&nbsp; ناوی کڕیار : </span>{{$sale->customer->name}}</td>
+          <td>{{$sale->id}}<span class="bd">&nbsp; :ژ. وەصل</span></td>
+       </tr>
+
+       <tr class="h5">
+          <td><span class="bd">&nbsp; ناوی کارمەند :</span>{{$sale->user->name}}</td>
+          <td>گواستراوە : {{$sale->statusText()}}</td>
+          <td>{{$sale->created_at}}<span class="bd">&nbsp; :بەروار</span></td>
+       </tr>
+       <tr class="h5">
+          <td ><span class="bd"> پارەی ماوە : </span>
+            {{number_format($sale->total-$sale->actualPaid())}}
+          </td>
+          <td><span>&nbsp; جۆر: </span> {{($sale->qistType())}}</td>
+          <td ><span>&nbsp; کۆی پسوڵە : </span> {{number_format($sale->total)}} </td>
+       </tr>
+       
+   </tbody>
+  </table>
+
+<div class="table-responsive text-center">
+<table class="table  table-bordered">
+   <thead class="tfs16boldc">
+       <tr class="text-center bg-info ">
+          <th class="text-center">نرخی هەر مەوادێک</th>
+          <th class="text-center">ژمارە</th>
+          <th class="text-center">ناوی مەواد</th>
+          <th class="text-center">کۆد</th>
+          <th class="text-center">#</th>
+       </tr>
+   </thead>
+   <tbody >
+<?php $i=1;?>
+
+@foreach ($sale->items as $item)
+        <tr class="text-center h6">
+            <td >{{$item->pivot->ppi}}</td>
+            <td >{{$item->pivot->quantity}}</td>
+            <td >{{$item->name}}</td>
+            <td >{{$item->id}}</td>
+            <td>{{$i}}</td>
+        </tr>
+        <?php $i++;?>
+@endforeach
+ 
+   </tbody>
+</table> 
+</div>
+
+<div class="table table-responsive ">
+<table class="table table-bordered table-active">
+    <thead class="tfs16boldc">
+       <tr class="text-center bg-info ">   
+            <th class="hidden-print text-center">سڕینەوە</th>
+            <th class="hidden-print text-center">پرێنت</th>
+            <th class="hidden-print text-center">گۆڕانکاری</th>
+            <th class="text-center">ناوی وەرگر</th>
+            <th class="text-center">بەرواری پارەدانەوە</th>
+            <th class="text-center">بڕی پارەی دراو</th>
+            <th class="text-center">بڕی پارەی داواکراو</th>
+            <th class="text-center">قیست</th>
+      </tr>
+</thead>
+
+<tbody>
+<?php $qist=1;?>
+ @foreach ($sale->ins as $ins)
+ 
+ @if($ins->created_at>=\Carbon\Carbon::Now() || $ins->calculatedPaid>0)
+   <tr class="text-center h6 ">
+ @else
+   <tr class="text-center h6 bg-danger">
+ @endif
+        <td>
+          @if(Auth::user()->type=="admin" && $ins->calculatedPaid==0)
+            <a class="bg-primary" onclick='confirmInstallmentDelete("{{$ins->id}}")'>
+                <span class="fa fa-trash "></span>
+            </a>
+          @endif
+        </td>
+
+		<td class="hidden-print"><a href="/installments/print/{{$ins->id}}"><span class="fa fa-print fa-1x"></span></a></td>
+
+        <td class="hidden-print">
+            <a class="bg-success" href="/installments/edit/{{$ins->id}}">
+                <span class="fa fa-edit fa"></span>
+            </a>
+        </td>
+         @if($ins->calculatedPaid>0)
+                    <td>{{$ins->user->name}}</td>
+            @else
+                <td>----</td>
+           @endif
+        <td >{{$ins->created_at->format('d/m/Y')}}</td>
+        <td >{{number_format($ins->calculatedPaid,2)}}</td>
+        <td >{{number_format($ins->expectedPaid,2)}}</td>
+        <td >{{$qist++}}</td>
+    </tr>
+  @endforeach
+</tbody>
+</table>
+</div>
+</div>
+              
+
+<div class="text-center">
+<a href="/sale/print/{{$sale->id}}" class="btn btn-circle btn-success"><span class="fa fa-print fa-2x"></span></a>
+
+<a onclick='confirmInstallmentAdd("{{$sale->id}}")'  class="btn btn-circle btn-success"><span class="fa fa-plus fa-2x"></span></a>
+
+<br>
+<hr class=" text-primary">
+
+</div>
+
+
+   @endforeach
+  
+</div>
+</div>
+
+
+</div>
+ </div>
+</div>
+
+@endsection
+
+   
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">سڕینەوەی قیست</h4>
+      </div>
+      <div class="modal-body text-center">
+        <h3>دڵنیایت لە سڕینەوەی ئەم قیستە؟</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">نەخێر</button>
+        <a id="delete" href="" type="button" class="btn btn-danger">بەڵێ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModaladd" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"> زیادکردنی ژمارەی قیست</h4>
+      </div>
+      <div class="modal-body text-center">
+        <h3>دڵنیایت لە زیادکردنی ئەم قیستە؟</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">نەخێر</button>
+        <a id="qist" href="" type="button" class="btn btn-danger">بەڵێ</a>
+      </div>
+    </div>
+  </div>
+</div>
+@section('afterFooter')
+<script type="text/javascript">
+
+$(document).ready(function () {
+  $("#menu-top li a").removeClass("menu-top-active");              
+  $('#sale').addClass('menu-top-active');
+  
+  });
+function confirmDeleteSale(id)
+{
+$("#delete").attr('href', "/sale/delete/"+id);
+$('#myModal').modal('show');
+}
+
+function confirmInstallmentAdd(id)  
+{
+$("#qist").attr('href', "/installments/addOneInstallment/"+id);
+$('#myModaladd').modal('show');
+}
+</script>
+@endsection
