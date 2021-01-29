@@ -36,7 +36,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-      $this->middleware('admin');
+        $this->middleware('admin');
     }
 
     /**
@@ -51,8 +51,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'mobile'=>'required',
-            'branch_id'=>'required'   
+            'mobile' => 'required',
+            'branch_id' => 'required'
         ]);
     }
 
@@ -64,25 +64,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if($data['type']=='mandwb')
-        {
-            $status='0';
+        if ($data['type'] == 'mandwb') {
+            $status = '0';
+        } else {
+            $status = '1';
         }
-        else
-        {
-            $status='1';
-        }
-       
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'type'=>$data['type'],
+            'type' => $data['type'],
             'password' => bcrypt($data['password']),
-            'mobile'=>$data['mobile'],
-            'status'=>$status,
-            'branch_id'=>$branch_id,
+            'mobile' => $data['mobile'],
+            'status' => $status,
+            'branch_id' => $data['branch_id']
         ]);
     }
-    
-    
 }

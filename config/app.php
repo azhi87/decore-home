@@ -135,10 +135,10 @@ return [
     |
     */
 
-'twilio' => [
-    'TWILIO_AUTH_TOKEN'  => env('TWILIO_AUTH_TOKEN'),
-    'TWILIO_ACCOUNT_SID' => env('TWILIO_ACCOUNT_SID'),
-    'TWILIO_APP_SID'     => env('TWILIO_APP_SID')
+    'twilio' => [
+        'TWILIO_AUTH_TOKEN'  => env('TWILIO_AUTH_TOKEN'),
+        'TWILIO_ACCOUNT_SID' => env('TWILIO_ACCOUNT_SID'),
+        'TWILIO_APP_SID'     => env('TWILIO_APP_SID')
     ],
 
 
@@ -183,6 +183,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * Customer providers
+         */
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -232,6 +237,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
