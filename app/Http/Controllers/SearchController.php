@@ -41,13 +41,13 @@ class SearchController extends Controller
             else
             $conditions['completed']='0';    
         }
-        	if ($request->has('sale_id')) 
+        	if ($request->filled('sale_id')) 
     	{
     		$conditions['id']=$request['sale_id'];
     	}
     	
     		$sales=\App\Sale::where($conditions)->latest();
-    	if ($request->has('tel')) 
+    	if ($request->filled('tel')) 
     	{
     	
     			$customer=\App\Customer::where('tel',$request['tel'])
@@ -58,7 +58,7 @@ class SearchController extends Controller
 
     	}
 
-    	elseif ($request->has('customer_name')) 
+    	elseif ($request->filled('customer_name')) 
     	{
     		$customer=\App\Customer::where('name','like','%'.$request['customer_name'].'%')->pluck('id');
     		            $sales->whereIn('customer_id',$customer);
@@ -69,12 +69,12 @@ class SearchController extends Controller
     	
         
     
-    	if ($request->has('from')) 
+    	if ($request->filled('from')) 
     	{
     		$sales->whereDate('created_at','>=',$request['from']);
     		
     	}
-    	if ($request->has('to')) 
+    	if ($request->filled('to')) 
     	{
     		$sales->whereDate('created_at','<=',$request['to']);
     	}
@@ -87,23 +87,23 @@ class SearchController extends Controller
     {
         $conditions=array();
         //$sales=\App\Sale::whereNotNull('created_at');
-        if ($request->has('debt_id')) 
+        if ($request->filled('debt_id')) 
         {
             $conditions['id']=$request['debt_id'];
         }
 
 
-        if ($request->has('customer_id')) 
+        if ($request->filled('customer_id')) 
         {
             $conditions['customer_id']=$request['customer_id'];
         }
-        elseif ($request->has('customer_name')) 
+        elseif ($request->filled('customer_name')) 
         {
             $customer=\App\Customer::where('name','like','%'.$request['customer_name'].'%')->first()->id;
             $conditions['customer_id']=$customer;
 
         }
-        elseif ($request->has('tel')) 
+        elseif ($request->filled('tel')) 
         {
             $customer=\App\Customer::where('tel','like','%'.$request['tel'].'%')->first()->id;
             $conditions['customer_id']=$customer;
@@ -120,12 +120,12 @@ class SearchController extends Controller
 
         }
         $debts=\App\Debt::where($conditions)->latest();
-        if ($request->has('from')) 
+        if ($request->filled('from')) 
         {
             $debts->whereDate('created_at','>=',$request['from']);
             
         }
-        if ($request->has('to')) 
+        if ($request->filled('to')) 
         {
             $debts->whereDate('created_at','<=',$request['to']);
         }

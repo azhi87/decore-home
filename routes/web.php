@@ -1,5 +1,8 @@
 <?php
 
+if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+}
 Route::get('/', function () {
 	return view('welcome');
 });
@@ -57,6 +60,8 @@ Route::middleware(['auth', 'maxzan'])->group(function () {
 
 
 Route::middleware(['auth', 'accountant'])->group(function () {
+    
+	Route::get('/sale/seeDeletedSales', 'SaleController@seeDeletedSales');
 
 	Route::post('/reports/qistByDate', 'SaleController@qistByDateReport');
 	Route::get('/expense/export', 'ExportController@export')->name('expense.export');
@@ -85,6 +90,8 @@ Route::middleware(['auth', 'accountant'])->group(function () {
 	Route::get('/sale/seeSales/{id?}', 'SaleController@seeSales');
 	Route::get('/sale/initials', 'SaleController@seeInitials');
 	Route::get('/sale/print/{index}', 'SaleController@salePrint');
+	Route::get('/sale/printt/{index}', 'SaleController@salePrintt');
+
 	Route::post('/sale/update/{id}', 'SaleController@create');
 	Route::post('/sale/accountantUpdate/{id}', 'SaleController@accountantUpdateSale');
 	Route::post('/sales/export', 'ExportController@export');
@@ -202,7 +209,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 		return view('reports.supplierDebt', compact('suppliers'));
 	});
 
-	Route::get('/sale/seeDeletedSales', 'SaleController@seeDeletedSales');
 
 	Route::get('/purchases/add', function () {
 		return view('purchases.addPurchase');

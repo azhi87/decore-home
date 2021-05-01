@@ -33,10 +33,12 @@
        </tr>
        
        <tr class="h5">
-          <td class="bg-info">{{$sale->updated_at}}<span class="bd">&nbsp; :بەرواری سڕینەوە</span></td>
-           <td colspan="2">{{$sale->description}}<span class="bd">&nbsp; : کۆدی مەواد</s</td> 
+           <td colspan="3">{{$sale->description}}<span class="bd">&nbsp; : کۆدی مەواد</s</td> 
        </tr>
-       
+             <tr class="h5">
+          <td colspan="1" class="bg-info">{{$sale->updated_at}}<span class="bd">&nbsp; :بەرواری سڕینەوە</span></td>
+           <td colspan="2" class="bg-danger"><span class="bd">&nbsp;    ناوی کارمەندی فرۆشتن: </span> {{$sale->mandwb->name}}</td> 
+       </tr>
    </tbody>
   </table>
 

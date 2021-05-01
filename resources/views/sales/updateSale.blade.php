@@ -132,7 +132,7 @@
                                             <label>  پارەی ماوە </label>
                                                 <input type="text" id="remained" disabled="disabled" 
                                                 onchange="getSaleTotalPrice();" onkeyup="getSaleTotalPrice();"
-                                                value="{{$sale->total-$sale->dollars+($sale->dinars/$sale->rate)}}" class="form-control border-input" >
+                                                value="{{$sale->total-$sale->calculatedPaid}}" class="form-control border-input" >
                                             </div>
                                         </div>
                                         

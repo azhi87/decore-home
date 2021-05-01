@@ -14,6 +14,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255',
             'mobile'=>'required',
             'type'=>'required',
+            'branch_id' => 'required',
         ]);
         $user = \App\User::find($id);
         $password = $request['password'];
@@ -36,6 +37,7 @@ class UserController extends Controller
             $user->email=$email;
             $user->type=$type;
             $user->name=$request['name'];
+            $user->branch_id=$request['branch_id'];
             $user->save();
             return redirect('/users');
     }

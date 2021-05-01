@@ -140,7 +140,11 @@ class User extends Authenticatable
     {
        
         $sales=DB::table('sales')->where('user_id',$this->id)
-                                 ->sum('calculatedPaid');
+                                 ->sum(DB::raw('dinars / rate + dollars'));
+                                 
+        $sales += DB::table('sales')->where('user_id_2',$this->id)
+                                 ->sum(DB::raw('dinars_2 / rate + dollars_2'));
+                                 
         $qists=DB::table('installments')->where('user_id',$this->id)
                                          ->sum('calculatedPaid');
         $paybacks=DB::table('paybacks')->where('user_id',$this->id)

@@ -22,6 +22,12 @@ class Sale extends Model
 	{
 		return $this->belongsTo('App\User');
 	}
+	
+	public function user2()
+	{
+		return $this->belongsTo('App\User','user_id_2');
+	}
+
 
 	public function mandwb()
 	{

@@ -75,6 +75,14 @@
 					<td class="text-danger"> {{$in->user->name}}</td>
 			</tr>
 			@endforeach
+			@foreach ($sales_2 as $in)
+            <tr class="bg-success">
+					<td class=""> {{number_format($in->dinars_2)}} </td>
+					<td class=""> {{number_format($in->dollars_2,2)}} </td>
+					<td class="text-danger"> {{$in->customer->name}}</td>
+					<td class="text-danger"> {{$in->user2->name}}</td>
+			</tr>
+			@endforeach
 </table>
 </div>
 </div>
@@ -113,6 +121,12 @@
             <td class="col-print-3  text-danger bg-warning">IQD {{number_format($sales->sum('dinars')+$installments->sum('dinarsPaid'))}}  </td>
             <td class="col-print-3  text-danger bg-warning">$ {{number_format($sales->sum('dollars')+$installments->sum('dollarsPaid'),2)}}       </td>
             <td class="col-print-4 bg-info"> : کۆی گشتی هاتووی  </td>
+        </tr>
+        
+        <tr>
+            <td class="col-print-3  text-danger bg-warning">IQD {{number_format($sales_2->sum('dinars_2'),0)}}  </td>
+            <td class="col-print-3  text-danger bg-warning">$ {{number_format($sales_2->sum('dollars_2'),2)}}       </td>
+            <td class="col-print-4 bg-info"> : پارەی پێشەکی دووەم  </td>
         </tr>
 
         <tr  >

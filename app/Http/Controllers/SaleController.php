@@ -52,7 +52,7 @@ class SaleController extends Controller
     }
    public function seeDeletedSales()
    {         
-      $sales=\App\DeletedSale::latest()->paginate(15);
+      $sales=\App\DeletedSale::latest()->paginate(30);
       return view('sales.seeDeletedSales',compact('sales'));
    }
    
@@ -110,10 +110,10 @@ class SaleController extends Controller
           $sale->total=$request['total'];
           $sale->initial_amount=$request['initial_amount'];
           
-          if($request->has('created_at'))
-          {
-              $sale->created_at=$request['created_at'];
-          }
+        //   if($request->has('created_at'))
+        //   {
+        //       $sale->created_at=$request['created_at'];
+        //   }
  
           $sale->installments=$request['installments'];
           if($request['status']==1)
@@ -203,14 +203,13 @@ class SaleController extends Controller
         $dsale->created_at=$sale->created_at;
         $dsale->installments=$sale->installments;
         $dsale->rate=$sale->rate;
-        $dsale->mandwb_id=$sale->mandwb_id;
+        $dsale->mandwb_id=$sale->user_id;
         $dsale->calculatedPaid=$sale->calculatedPaid;
         $dsale->support=$sale->support;
         $dsale->branch_id=$sale->branch_id;
         $dsale->customer_id=$sale->customer_id;
         $dsale->status=$sale->status;
-        $dsale->mandwb_id=$sale->mandwb_id;
-        
+
         foreach($sale->items as $item)
         {
           $dsale->description=$dsale->description.'---- Item_Code: '.$item->id.'';
@@ -236,13 +235,22 @@ class SaleController extends Controller
       return view('sales.salePrint',compact('sale'));
    }
    
+      public function salePrintt($id)
+   {
+      $sale=Sale::find($id);
+      //$invoice_headers=DB::table('invoice_headers')->find(1);
+      return view('sales.salePrintt',compact('sale'));
+   }
+   
    public function accountantUpdateSale($id,Request $request)
    {
        $sale=Sale::find($id);
        $sale->description=$request['description'];
        $sale->dinars=$request['dinars']; 
-       $sale->dollars=$request['dollars'];
-       $sale->calculatedPaid=($sale->dinars/$sale->rate)+$sale->dollars;
+       $sale->dinars_2=$request['dinars_2']; 
+       $sale->dollars_2=$request['dollars_2'];
+       $sale->user_id_2 = auth()->user()->id;
+       $sale->calculatedPaid=( ($sale->dinars + $sale->dinars_2) /$sale->rate ) + ($sale->dollars + $sale->dollars_2);
        $sale->save();
        return redirect('/sale/print/'.$sale->id);
    }
@@ -364,6 +372,10 @@ class SaleController extends Controller
         $sales=\App\Sale::whereDate('created_at','>=',$from)
                                         ->whereDate('created_at','<=',$to)
                                         ->where('user_id',$user_id)->get();
+        
+        $sales_2=\App\Sale::whereDate('created_at','>=',$from)
+                                        ->whereDate('created_at','<=',$to)
+                                        ->where('user_id_2',$user_id)->get();
                                         
          $expenses=\App\Expense::whereDate('created_at','>=',$from)
                                         ->whereDate('created_at','<=',$to)
@@ -379,17 +391,20 @@ class SaleController extends Controller
          $sales=\App\Sale::whereDate('created_at','>=',$from)
                                         ->whereDate('created_at','<=',$to)
                                         ->get();
+        $sales_2=\App\Sale::whereDate('created_at','>=',$from)
+                                        ->whereDate('created_at','<=',$to)
+                                        ->where('user_id_2','!=',0)
+                                        ->get();
                                         
          $expenses=\App\Expense::whereDate('created_at','>=',$from)
                                         ->whereDate('created_at','<=',$to)
                                         ->get();
                                         $user="هەموو";
       }
-        
-        
+      
        
 
-       return view('reports.qistByDateReport',compact(['from','to','installments','user','expenses','sales']));
+       return view('reports.qistByDateReport',compact(['from','to','installments','user','expenses','sales','sales_2']));
    }
    public function froshyarReport(Request $request)
    {

@@ -1,0 +1,206 @@
+@extends('layouts.master')
+<style>
+    @media print {
+      
+        .pagebreak {
+            page-break-before: always;
+        }
+
+        /* page-break-after works, as well */
+        
+        .split {
+          height: 100%;
+          width: 45%;
+          position: fixed;
+          z-index: 1;
+        }
+        .left {
+          left: 20;
+        }
+        .right {
+          right: 20;
+        }
+
+    }
+</style>
+@section('content')
+<div class="split right">
+@if($sale->installments>0)
+<div class="row bordered-2 gradient4">
+    <img class="visible-print" width="600" src="{{asset('/public/img/decorheader.jpg')}}" alt=" Decor Home Mobilya">
+</div>
+
+<div class="row bordered-1">
+    <table class="table table-bordered table-striped table-responsive table-text-center tfs10boldp ">
+        <thead>
+            <tr class="h5">
+                <td style="border:1px solid black;" colspan="3"><span class="bd">&nbsp; ناوی کڕیار : </span>{{$sale->customer->name}}</td>
+                <td style="border:1px solid black;" colspan="2">{{$sale->id}}<span class="bd">&nbsp; :ژ. وەصل</span></td>
+            </tr>
+            <tr class="h5">
+                <td style="border:1px solid black;" colspan="3"> {{$sale->created_at->format("Y/m/d H:i A")}}<span class="bd">&nbsp; :بەروار</span></td>
+                <td style="border:1px solid black;" colspan="2">{{$sale->customer->tel}}<span class="bd">:تێل </span></td>
+            </tr>
+            <tr class="bg-success">
+                <th>ئیمزا</th>
+                <th>بەروار</th>
+                <th> کۆی پارەی دراو </th>
+                <th>پارەی داواکراو</th>
+                <th>قیست</th>
+            </tr>
+        </thead>
+
+        <thead>
+            <?php $i = 1; ?>
+            @foreach($sale->ins as $ins)
+            <?php if ($ins->calculatedPaid == 0) {
+                $name = '----';
+            } else {
+                $name = $ins->user->name;
+            }
+            ?>
+                @if($ins->created_at>=\Carbon\Carbon::Now() || $ins->calculatedPaid>0)
+                   <tr class="text-center h6 ">
+                 @else
+                   <tr class="text-center h6 bg-danger">
+                 @endif
+                <th class="col-print-1"></td>
+                <th class="col-print-11 ">{{$ins->created_at->format('d/ m/ Y')}}</th>
+                <th class="col-print-11 ">{{number_format($ins->calculatedPaid,2)}}</th>
+                <th class="col-print-2">{{number_format($ins->expectedPaid,2)}}</th>
+                <th class="col-print-0 bg-warning text-danger">{{$i++}}</th>
+            </tr>
+            @endforeach
+        </thead>
+            <tfood>
+                <tr>
+                    <td colspan="4" class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; ">
+                         {{number_format($sale->total,2)}} :کۆی داواکراو </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4" class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; "> 
+                        {{number_format($sale->actualPaid(),2)}} :کۆی دراو</td>
+                </tr>
+                
+                <tr>
+                    <td colspan="4" class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle ; line-height: 20px; "> 
+                        {{number_format($sale->total-$sale->actualPaid(),2)}} : کۆی قیستی ماوە</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class=" hidden col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; "> {{number_format($sale->discount,2)}} :داشکاندن</td>
+
+                    <td colspan="2" class="hidden col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; "> {{number_format($sale->total+$sale->discount,2)}}: کۆی پسوڵە </td>
+
+                    <td colspan="2" class="hidden col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; "> {{number_format($sale->initial_amount,2)}} :پێشەکی</td>
+                </tr>
+            </tfood>
+                <tr>
+                    <td colspan="4" class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; ">
+                        {{$ins->note}} </td>
+                </tr>
+
+    </table>
+</div>
+
+@endif
+</div>
+
+<div class="split left">
+@if($sale->installments>0)
+<div class="row bordered-2 gradient4">
+    <img class="visible-print" width="600" src="{{asset('/public/img/decorheader.jpg')}}" alt=" Decor Home Mobilya">
+</div>
+
+<div class="row bordered-1">
+    <table class="table table-bordered table-striped table-responsive table-text-center tfs10boldp ">
+        <thead>
+            <tr class="h5">
+                <td style="border:1px solid black;" colspan="3"><span class="bd">&nbsp; ناوی کڕیار : </span>{{$sale->customer->name}}</td>
+                <td style="border:1px solid black;" colspan="2">{{$sale->id}}<span class="bd">&nbsp; :ژ. وەصل</span></td>
+            </tr>
+            <tr class="h5">
+                <td style="border:1px solid black;" colspan="3"> {{$sale->created_at->format("Y/m/d H:i A")}}<span class="bd">&nbsp; :بەروار</span></td>
+                <td style="border:1px solid black;" colspan="2">{{$sale->customer->tel}}<span class="bd">:تێل </span></td>
+            </tr>
+            <tr class="bg-success">
+                <th>ئیمزا</th>
+                <th>بەروار</th>
+                <th> کۆی پارەی دراو </th>
+                <th>پارەی داواکراو</th>
+                <th>قیست</th>
+            </tr>
+        </thead>
+
+        <thead>
+            <?php $i = 1; ?>
+            @foreach($sale->ins as $ins)
+            <?php if ($ins->calculatedPaid == 0) {
+                $name = '----';
+            } else {
+                $name = $ins->user->name;
+            }
+            ?>
+            @if($ins->created_at>=\Carbon\Carbon::Now() || $ins->calculatedPaid>0)
+                   <tr class="text-center h6 ">
+                 @else
+                   <tr class="text-center h6 bg-danger">
+                 @endif
+                <th class="col-print-1"></td>
+                <th class="col-print-11 ">{{$ins->created_at->format('d/ m/ Y')}}</th>
+                <th class="col-print-11 ">{{number_format($ins->calculatedPaid,2)}}</th>
+                <th class="col-print-2">{{number_format($ins->expectedPaid,2)}}</th>
+                <th class="col-print-0 bg-warning text-danger">{{$i++}}</th>
+            </tr>
+            @endforeach
+        </thead>
+  <tfood>
+                <tr>
+                    <td colspan="4" class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; ">
+                         {{number_format($sale->total,2)}} :کۆی داواکراو </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4" class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; "> 
+                        {{number_format($sale->actualPaid(),2)}} :کۆی دراو</td>
+                </tr>
+                
+                <tr>
+                    <td colspan="4" class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle ; line-height: 20px; "> 
+                        {{number_format($sale->total-$sale->actualPaid(),2)}} : کۆی قیستی ماوە</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class=" hidden col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; "> {{number_format($sale->discount,2)}} :داشکاندن</td>
+
+                    <td colspan="2" class="hidden col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; "> {{number_format($sale->total+$sale->discount,2)}}: کۆی پسوڵە </td>
+
+                    <td colspan="2" class="hidden col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; "> {{number_format($sale->initial_amount,2)}} :پێشەکی</td>
+                </tr>
+            </tfood>
+                <tr>
+                    <td colspan="4" class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 20px; ">
+                        {{$ins->note}} </td>
+                </tr>
+            </tfood>
+    </table>
+</div>
+
+@endif
+</div>
+
+@endsection
+
+@section('afterFooter')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu-top li a").removeClass("menu-top-active");
+        $('#sale').addClass('menu-top-active');
+        window.print();
+    });
+
+    function confirmDeleteSale(id) {
+        $("#delete").attr('href', "/sale/delete/" + id);
+        $('#myModal').modal('show');
+    }
+</script>
+@endsection

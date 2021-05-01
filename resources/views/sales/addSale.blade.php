@@ -83,12 +83,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="col-md-3 hidden">
-                                            <div class="form-group">
-                                                <label> بەروار</label>
-                                                <input type="date"   name="created_at" class="form-control border-input" >
-                                            </div>
-                                        </div> 
+                                       
                                
                                <div class="col-md-1"></div>
                                         <div class="col-md-1">
@@ -197,7 +192,7 @@
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>ماوەی قیست</label>
-                                                   <input min="0" max="12" value="11" type="text" class="form-control" name="installments" id="installments" required>
+                                                   <input min="0" max="12" value="10" type="text" class="form-control" name="installments" id="installments" required>
                                             </div>
                                         </div>
 

@@ -16,7 +16,7 @@
           
        <tr class="h5">
           <td>{{$sale->customer->tel}}<span class="bd">:تێل </span></td>
-          <td><span class="bd">&nbsp; ناوی کڕیار : </span>{{$sale->customer->id}}&nbsp;--&nbsp;{{$sale->customer->name}}</td>
+          <td><span class="bd">&nbsp; ناوی کڕیار : </span>&nbsp;{{$sale->customer->name}}</td>
           <td>{{$sale->id}}<span class="bd">&nbsp; :ژ. وەصل</span></td>
        </tr>
 
@@ -33,22 +33,23 @@
 
        <tr class="h5">
           <td ><span class="bd"> پارەی ماوە : </span>{{number_format($sale->total-$sale->actualPaid())}}</td>
+          <td ><span class="bd">  داشکاندن : </span>{{number_format($sale->discount)}}</td>
           <td ><span>&nbsp; کۆی پسوڵە : </span> {{number_format($sale->total)}} </td>
-          <td><span>&nbsp; جۆر: </span> {{($sale->qistType())}}</td>
        </tr>
        
-       <tr class="h5">
-           <td  style="direction: rtl;" ><span class="bd"  style="direction: rtl; text-align: right;" > تێبینی: </span>{{$sale->description}}</td> 
-           @if($sale->support=="1")
+       <tr class="h5">           
+                       <td style="border:1px solid black;"><span>&nbsp; جۆر: </span> {{($sale->qistType())}}</td>
+        @if($sale->support=="1")
            <td class="bg-info">پشتگیری : {{$sale->supportText()}} -- ژمارە {{$sale->support_no}}</td>
            @else
             <td class="bg-danger">پشتگیری : {{$sale->supportText()}}</td>
            @endif
            
-           
            <td class="bg-info">گواستراوە : {{$sale->statusText()}} - {{$sale->transferDate()}}</td>
        </tr>
-       
+        <tr>           
+            <td colspan="3" style="direction: rtl;" ><span class="bd"  style="direction: rtl; text-align: right;" > تێبینی: </span>{{$sale->description}}</td> 
+        </tr>
    </tbody>
   </table>
 

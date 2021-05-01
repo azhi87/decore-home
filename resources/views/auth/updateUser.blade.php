@@ -44,6 +44,13 @@
                             </div>
                             <label for="email" class="col-md-4 control-label">جۆری بەکار‌هێنەر</label>
                         </div>
+                        
+                        <div class="form-group{{ $errors->has('branch_id') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                <input id="branch_id" type="text" class="form-control" name="branch_id" value="{{$user->branch_id}}" required>
+                            </div>
+                            <label for="brach_id" class="col-md-4 control-label">لق</label>
+                        </div>
 
 
 

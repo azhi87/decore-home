@@ -35,6 +35,9 @@
                 <td style="border:1px solid black;">{{$sale->id}}<span class="bd">&nbsp; :ژ. وەصل</span></td>
                 <td style="border:1px solid black;" class="bg-info"> {{$sale->branch->name}}</td>
             </tr>
+            <tr>           
+                 <td colspan="4" style="direction: rtl;" ><span class="bd"  style="direction: rtl; text-align: right;" > تێبینی: </span>{{$sale->description}}</td> 
+            </tr>
         </table>
     </div>
     @if($sale->installments>0)
@@ -94,7 +97,7 @@
 </div>
 
 <div class="row bordered-2 gradient4" style="padding-top: 2px !important; ">
-    <img class="visible-print" width="1165" src="{{asset('/public/img/decorfooter.jpg')}}" alt=" Decor Home Mobilya">
+    <img class="visible-print" width="1165" src="{{asset('/public/img/decor-footerr.jpg')}}" alt=" Decor Home Mobilya">
 </div>
 
 <div class="pagebreak"> </div>
@@ -179,22 +182,25 @@
             <tbody>
                 <tr>
                     <td class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 30px; "> {{number_format($sale->total,2)}} :کۆی داواکراو </td>
+
                     <td class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 30px; "> {{number_format($sale->discount,2)}} :داشکاندن</td>
+
                     <td class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 30px; "> {{number_format($sale->total+$sale->discount,2)}}: کۆی پسوڵە </td>
                 </tr>
 
                 <tr>
-                    <td class="col-print-11 bg-warning text-danger bordered-2" style="text-align: center !important; ; vertical-align: middle !important; ; line-height: 30px !important; "> {{number_format($sale->total-$sale->actualPaid(),2)}} :کۆی قیستی ماوە</td>
+                    <td class="col-print-11 bg-warning text-danger bordered-2" style="text-align: center !important; ; vertical-align: middle !important; ; line-height: 30px !important; "> {{number_format($sale->total-$sale->actualPaid(),2)}} : کۆی قیستی ماوە</td>
+
                     <td class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 30px; "> {{number_format($sale->actualPaid(),2)}} :کۆی دراو</td>
-                    <td class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 30px; "> {{number_format($sale->calculatedPaid,2)}} :پێشەکی</td>
+
+                    <td class="col-print-11  bg-warning text-danger bordered-2" style="text-align: center; vertical-align: middle; line-height: 30px; "> {{number_format($sale->initial_amount,2)}} :پێشەکی</td>
                 </tr>
             </tbody>
-        </table>
     </div>
 </div>
 
 <div class="row bordered-2 gradient4" style="padding-top: 2px !important; ">
-    <img class="visible-print" width="1165" src="{{asset('/public/img/decorfooter.jpg')}}" alt=" Decor Home Mobilya">
+    <img class="visible-print" width="1165" src="{{asset('/public/img/decor-footerr.jpg')}}" alt=" Decor Home Mobilya">
 </div>
 @endif
 

@@ -12,7 +12,24 @@
 
 @if(Auth::user()->type=='admin' || Auth::user()->type=='accountant')
 <div class="row">
+	<div class="col-md-3 col-sm-6 col-xs-10">
+		@include('layouts.errorMessages')
+		<div class="card panel-info">
+			<div class="panel-heading text-center">
+				<span class='h5 color-black'> فرۆشتنە سڕاوەکان </span>
+			</div>
+			<div class="panel-body text-right">
+				<form method="GET" action="/sale/seeDeletedSales" id="contact_form">
+					{{csrf_field()}}
 
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-primary btn-block btn3d"><strong>گەڕان</strong></button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
 	<div class="col-md-3 col-sm-6 col-xs-10">
 		@include('layouts.errorMessages')
 		<div class="card panel-info">
@@ -428,24 +445,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-3 col-sm-6 col-xs-10">
-		@include('layouts.errorMessages')
-		<div class="card panel-info">
-			<div class="panel-heading text-center">
-				<span class='h5 color-black'> فرۆشتنە سڕاوەکان </span>
-			</div>
-			<div class="panel-body text-right">
-				<form method="GET" action="/sale/seeDeletedSales" id="contact_form">
-					{{csrf_field()}}
 
-					<div class="col-md-12">
-						<button type="submit" class="btn btn-primary btn-block btn3d"><strong>گەڕان</strong></button>
-					</div>
-
-				</form>
-			</div>
-		</div>
-	</div>
 
 </div>
 

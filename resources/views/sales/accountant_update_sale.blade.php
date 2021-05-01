@@ -38,18 +38,34 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label> پارەی دراو دۆلار</label>
-							<input type="text" name="dollars" id="dollars" value="{{$sale->dollars}}" onchange="getSaleTotalPrice();" onkeyup="getSaleTotalPrice();" class="form-control border-input" required>
+							<input readonly="readonly" type="text" name="dollars" id="dollars" value="{{$sale->dollars}}" onchange="getSaleTotalPrice();" onkeyup="getSaleTotalPrice();" class="form-control border-input" required>
 						</div>
 					</div>
 
 					<div class="col-md-4">
 						<div class="form-group">
 							<label>پارەی دراو دینار</label>
-								<input type="text" name="dinars" id="dinars" value="{{$sale->dinars}}" onchange="getSaleTotalPrice();" onkeyup="getSaleTotalPrice();" class="form-control border-input" required>
+								<input readonly="readonly" type="text" name="dinars" id="dinars" value="{{$sale->dinars}}" onchange="getSaleTotalPrice();" onkeyup="getSaleTotalPrice();" class="form-control border-input" required>
 						</div>
 					</div>
 
 				</div>
+				<div class="row text-right color-black">
+				<div class="col-md-3"></div>
+				 <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>2 پارەی دراو دۆلار</label>
+            <input type="text" name="dollars_2" id="dollars_2" value="{{$sale->dollars_2}}" onchange="getSaleTotalPrice();" 
+                    onkeyup="getSaleTotalPrice();" class="form-control border-input" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>2 پارەی دراو دینار</label>
+            <input type="text" name="dinars" id="dinars_2" onchange="getSaleTotalPrice();" value="{{$sale->dinars_2}}"
+                    onkeyup="getSaleTotalPrice();" class="form-control border-input" required>
+                                </div>
 
 				<br>
 				<div class="text-center no-print">

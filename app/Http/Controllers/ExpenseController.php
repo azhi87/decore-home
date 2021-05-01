@@ -45,7 +45,7 @@ class ExpenseController extends Controller
       $expense->reason = request('reason');
     }
     $expense->amount = request('amount');
-    $expense->dinars = request('dinars') * 1000;
+    $expense->dinars = request('dinars');
     $expense->dollars = request('dollars');
     $expense->note = request('note');
 
