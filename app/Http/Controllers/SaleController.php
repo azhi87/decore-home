@@ -64,6 +64,7 @@ class SaleController extends Controller
         {
             $sale=new Sale();
             $sale->user_id=\Auth::user()->id;
+             $sale->branch_id=\Auth::user()->branch->id;
             $sale->mandwb_id=$request['mandwb_id'];
             
         }
@@ -97,7 +98,7 @@ class SaleController extends Controller
         //       $sale->id=$request['id'];
         //   }
           
-          $sale->branch_id=\Auth::user()->branch->id;
+         
           $sale->rate=$rate;
           $sale->customer_id=$customer->id;
          
@@ -143,7 +144,7 @@ class SaleController extends Controller
                 $ins->calculatedPaid=0;
                 if($t==($sale->installments-1))
                 {
-                  $ins->expectedPaid=ceil(($sale->total-$sale->initial_amount)/$sale->installments);
+                  $ins->expectedPaid=ceil( $sale->total-$sale->initial_amount - $sale->ins->sum('expectedPaid'));
                 }
                 else
                 {
