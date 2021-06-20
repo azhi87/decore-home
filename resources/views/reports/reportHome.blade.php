@@ -404,6 +404,30 @@
 		</div>
 	</div>
 
+	<div class="col-md-3 col-sm-6 col-xs-10">
+		@include('layouts.errorMessages')
+		<form method="POST" action="/reports/stockByCat" id="contact_form">
+			{{csrf_field()}}
+			<div class="card panel-info">
+				<div class="panel-heading text-center">
+					<span class='h5 color-black'> ڕاپۆرتی مەخزەن بەپێی جۆر </span>
+				</div>
+				<fieldset class="form-group">
+					<label for="id"> جۆری کاڵا </label>
+					<select class="form-control select2" name="cat_id">
+						@foreach ($cats as $cat)
+						<option value="{{$cat->id}}">{{$cat->name}} </option>
+						@endforeach
+					</select>
+				</fieldset>
+				<div class="panel-body text-right">
+
+					<button type="submit" class="btn btn-primary btn-block"><strong>گەڕان</strong></button>
+				</div>
+			</div>
+		</form>
+	</div>
+
 	{{-- ***********************************************************************
  --}}
 

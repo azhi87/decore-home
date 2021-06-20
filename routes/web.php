@@ -1,7 +1,7 @@
 <?php
 
-if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
-    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+	error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
 Route::get('/', function () {
 	return view('welcome');
@@ -26,6 +26,7 @@ Route::middleware(['auth', 'maxzan'])->group(function () {
 	Route::post('/items/search', 'ItemController@search');
 	Route::post('/items/searchName', 'ItemController@searchName');
 	Route::post('/items/store', 'ItemController@store');
+	Route::post('/reports/stockByCat', 'StockController@stockByCat');
 	Route::post('/reports/stock', function () {
 		$cat_id = Request('cat_id');
 		if (empty($cat_id) || $cat_id == 0) {
@@ -60,7 +61,7 @@ Route::middleware(['auth', 'maxzan'])->group(function () {
 
 
 Route::middleware(['auth', 'accountant'])->group(function () {
-    
+
 	Route::get('/sale/seeDeletedSales', 'SaleController@seeDeletedSales');
 
 	Route::post('/reports/qistByDate', 'SaleController@qistByDateReport');
